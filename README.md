@@ -76,7 +76,7 @@ Create password file
 touch .env
 ```
 
-Update `.env / update user pass and cluster`
+Update `.env`
 ```
 MONGO_URL='' ASK FOR TEAM PASSWORD OR SIGN UP TO MONGO DB FOR FREE
 PORT='3001'
