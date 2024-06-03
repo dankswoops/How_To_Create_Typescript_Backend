@@ -1,118 +1,99 @@
 [Markdown Guide](https://markdown-it.github.io/)
 
-# Server Creation Documentation
+# How to create a typescript server
 [Video Guide](https://www.youtube.com/watch?v=HvxYkugp55A)
+Create backend folder
 
-```
-mkdir backend
-```
+  mkdir backend
 
+Change directory backend
 
-```
-cd backend
-```
+  cd backend
 
+Create compiled output folder
 
-```
-mkdir dist
-```
+  mkdir dist
 
+Create uncompiled in folder
 
-```
-mkdir src
-```
+  mkdir src
 
+Create project seed
 
-```
-npm init -y
-```
+  npm init -y
 
-`package.json`
+Update `package.json`
 
-```
-{
-  "name": "backend",
-  "version": "0.00",
-  "main": "src/index.ts",
-  "type": "module",
-  "scripts": {
-    "start": "tsc && node dist/index.js"
-  },
-  "keywords": [],
-  "license": "ISC"
-}
-```
-
-
-```
-npm i -g typescript
-```
-
-
-```
-npx tsc --init
-```
-
-`tsconfig.json`
-
-```
-{
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "strict": true,
-    "removeComments": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+  {
+    "name": "backend",
+    "version": "0.00",
+    "main": "src/index.ts",
+    "type": "module",
+    "scripts": {
+      "start": "tsc && node dist/index.js"
+    },
+    "keywords": [],
+    "license": "ISC"
   }
-}
-```
 
+Install typescript globally
 
-```
-touch .env
-```
+  npm i -g typescript
 
-`.env / update user pass and cluster`
+Create file that configures the compiling
 
-```
-MONGO_URL='mongodb+srv://databaseusername:databasepassword@Clustorname.w6phlxn.mongodb.net/?retryWrites=true&w=majority&appName=Clustorname'
-PORT='3001'
-```
+  npx tsc --init
 
+Update `tsconfig.json`
 
-```
-touch src/index.ts
-```
+  {
+    "compilerOptions": {
+      "target": "ES2022",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "rootDir": "./src",
+      "outDir": "./dist",
+      "strict": true,
+      "removeComments": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true
+    }
+  }
 
-`src/index.ts`
+Create password file
 
-```
-import express, { Request, Response } from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
-const app = express();
-/* MONGOOSE SETUP */
-const PORT: string | number = process.env.PORT || 3002;
-mongoose
-  .connect(process.env.MONGO_URL!, {
-  } as mongoose.ConnectOptions)
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-  })
-  .catch((error: any) => console.log(`${error} did not connect`));
-```
+  touch .env
 
+Update `.env / update user pass and cluster`
 
-```
-npm i express dotenv mongodb mongoose @types/express @types/mongodb @types/mongoose
-```
+  MONGO_URL='' ASK FOR TEAM PASSWORD OR SIGN UP TO MONGO DB FOR FREE
+  PORT='3001'
 
+Create the main backend file
 
-```
-npm run start
-```
+  touch src/index.ts
+
+Update `src/index.ts`
+
+  import express, { Request, Response } from "express";
+  import mongoose from "mongoose";
+  import dotenv from "dotenv";
+  dotenv.config();
+  const app = express();
+  /* MONGOOSE SETUP */
+  const PORT: string | number = process.env.PORT || 3002;
+  mongoose
+    .connect(process.env.MONGO_URL!, {
+    } as mongoose.ConnectOptions)
+    .then(() => {
+      app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    })
+    .catch((error: any) => console.log(`${error} did not connect`));
+
+Install packages and typescript packages
+
+  npm i express dotenv mongodb mongoose @types/express @types/mongodb @types/mongoose
+
+Test setup, CTRL + C to stop
+
+  npm run start
